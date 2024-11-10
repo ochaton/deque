@@ -3,6 +3,7 @@ name: Build Tarantool
 on:
   push:
     branches: [ "master" ]
+    tags: ["*"]
 
 jobs:
   build:
