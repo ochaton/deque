@@ -6,16 +6,35 @@ credentials:
       privileges:
         - universe: true
           permissions: ["read", "write", "execute"]
+    replica:
+      password: replica
+      roles:
+        - replication
 
 app:
   module: 'storage'
+
+replication:
+  failover: manual
+  bootstrap_strategy: config
+
+iproto:
+  advertise:
+    peer:
+      login: replica
 
 groups:
   storages:
     replicasets:
       deque001:
+        bootstrap_leader: deque_001
+        leader: deque_001
         instances:
           deque_001:
             iproto:
               listen:
               - uri: '127.0.0.1:3301'
+          deque_002:
+            iproto:
+              listen:
+              - uri: '127.0.0.1:3302'
