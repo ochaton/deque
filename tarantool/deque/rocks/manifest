@@ -1,0 +1,18 @@
+commands = {}
+modules = {}
+repository = {
+   inspect = {
+      ["3.1.0-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
+   spacer = {
+      ["3.2.0-1"] = {
+         {
+            arch = "src"
+         }
+      }
+   }
+}

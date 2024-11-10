@@ -2,3 +2,7 @@ tarantool/.rocks/share
 tarantool/.rocks/lib
 tarantool/.rocks/bin
 env
+tarantool/deque/.rocks/share
+tarantool/deque/.rocks/bin
+tarantool/deque/.rocks/lib
+tarantool/deque/var
