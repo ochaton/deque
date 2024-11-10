@@ -1,0 +1,26 @@
+name: Build Tarantool
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup tarantool and tt
+        run: |
+          curl -L https://tarantool.io/release/3/installer.sh | sudo bash
+          sudo apt install -y tt tarantool tarantool-dev
+          tt version
+      - uses: actions/checkout@v4
+      - name: Build tarantool/deque
+        run: make -C tarantool/deque build
+      - name: Pack tarantool/deque
+        run: make -C tarantool/deque pack
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            tarantool/deque/deque_0.1.0.0-1_x86_64.deb
