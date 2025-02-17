@@ -12,11 +12,11 @@ box.spacer:space({
 	format = {
 		{ name = 'id',      type = 'string' },
 		{ name = 'time',    type = 'number' }, -- support fractional
-		{ name = 'payload', type = 'any'    }, -- any non-nullable payload
+		{ name = 'payload', type = 'any' }, -- any non-nullable payload
 	},
 	indexes = {
-		{ name = 'primary', parts = {'id'} },
-		{ name = 'time',    parts = {'time', 'id'} },
+		{ name = 'primary', parts = { 'id' } },
+		{ name = 'time',    parts = { 'time', 'id' } },
 	},
 })
 
@@ -25,12 +25,12 @@ box.spacer:space({
 	format = {
 		{ name = 'id',      type = 'string' }, -- same as queue.id
 		{ name = 'expires', type = 'number' }, -- timestamp (unix seconds) when must be removed
-		{ name = 'payload', type = 'any'    }, -- payload
+		{ name = 'payload', type = 'any' }, -- payload
 	},
 
 	indexes = {
-		{ name = 'primary', parts = {'id'} },
-		{ name = 'expires', parts = {'expires'}, unique = false },
+		{ name = 'primary', parts = { 'id' } },
+		{ name = 'expires', parts = { 'expires' }, unique = false },
 	},
 })
 

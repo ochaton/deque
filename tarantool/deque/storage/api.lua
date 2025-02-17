@@ -48,13 +48,13 @@ function api.push_many(tasks)
 		local ok, err
 		ok, err = pcall(validate_task, task)
 		if not ok then
-			results[tostring(task.id)] = {ok = ok, error = err}
+			results[tostring(task.id)] = { ok = ok, error = err }
 			log.warn("Failed to push task %s: %s", json.encode(task), err)
 			goto continue
 		end
 
 		ok, err = pcall(push_one, task)
-		results[tostring(task.id)] = {ok = ok, error = err}
+		results[tostring(task.id)] = { ok = ok, error = err }
 		::continue::
 	end
 
@@ -74,12 +74,12 @@ function api.pop(opts)
 
 	local task = box.space.queue.index.time:pairs({ 0 }, { iterator = "GE" }):nth(1)
 	if task and task.time < now then
-		return box.space.queue:update({ task.id }, { {'=', 'time', now+opts.delay} })
-			:tomap({names_only=true})
+		return box.space.queue:update({ task.id }, { { '=', 'time', now + opts.delay } })
+			:tomap({ names_only = true })
 	end
 
 	local timeout = tonumber(opts.wait_timeout) or 0
-	if task and task.time < now+timeout then
+	if task and task.time < now + timeout then
 		-- task can be awaited in a given timeout
 		fiber.sleep(timeout)
 
@@ -141,6 +141,5 @@ function api.pop_many(opts)
 		delay = opts.delay,
 	})
 end
-
 
 return api

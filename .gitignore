@@ -6,3 +6,4 @@ tarantool/deque/.rocks/share
 tarantool/deque/.rocks/bin
 tarantool/deque/.rocks/lib
 tarantool/deque/var
+**/__pycache__
