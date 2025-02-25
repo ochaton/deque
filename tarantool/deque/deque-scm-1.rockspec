@@ -1,15 +1,26 @@
 package = "deque"
 version = "scm-1"
 source = {
-   url = "*** please add URL for source tarball, zip or repository here ***"
+   url = "git+https://github.com/ochaton/deque"
 }
 description = {
-   homepage = "*** please enter a project homepage ***",
-   license = "*** please specify a license ***"
+   homepage = "https://github.com/ochaton/deque",
+   license = "MIT"
 }
 dependencies = {
    "spacer ~> 3",
    "expirationd ~> 1.6",
+}
+test_dependencies = {
+   "luacheck",
+   "luatest",
+   "luacov",
+   "luacov-coveralls",
+   "luacov-console",
+}
+test = {
+   type = 'command',
+   command = 'make test',
 }
 build = {
    type = "builtin",

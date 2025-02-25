@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Setup tarantool and tt
         run: |
@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build tarantool/deque
         run: make -C tarantool/deque build
+      - name: Test tarantool/deque
+        run: make -C tarantool/deque test
       - name: Pack tarantool/deque
         run: make -C tarantool/deque pack
       - name: Archive build artifact
