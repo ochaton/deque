@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://gist.githubusercontent.com/ochaton/24957db1617df119b30b5e7cec05e3cf/raw/cf498e23928eefad2cf31748a369a8fa124166f2/config.schema-3.3.0.json
+credentials:
+  users:
+    test:
+      password: test
+      privileges:
+        - universe: true
+          permissions: ["read", "write", "execute"]
+    replica:
+      password: replica
+      roles:
+        - replication
+
+app:
+  module: 'storage'
+
+replication:
+  failover: manual
+  bootstrap_strategy: config
+
+iproto:
+  advertise:
+    peer:
+      login: replica
+
+groups:
+  storages:
+    replicasets:
+      deque001:
+        bootstrap_leader: deque_001
+        leader: deque_001
+        instances:
+          deque_001:
+            iproto:
+              listen:
+              - uri: '127.0.0.1:3301'

@@ -1,0 +1,16 @@
+include = {
+	"storage",
+}
+
+exclude = {
+	".rocks",
+	"test/",
+}
+
+coveralls = {
+	root = "/",
+	debug = true,
+	pathcorrect = {
+			{ "^/home/runner/work/deque/deque/", "" },
+	},
+}
