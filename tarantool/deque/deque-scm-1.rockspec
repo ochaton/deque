@@ -11,6 +11,7 @@ description = {
 dependencies = {
    "spacer ~> 3",
    "expirationd ~> 1.6",
+   "package-reload",
 }
 test_dependencies = {
    "luacheck",
