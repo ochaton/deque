@@ -14,7 +14,7 @@ local function push_one(task)
 	})
 end
 
-local function validate_task(task)
+local function validate_task(_)
 	checks({
 		id = 'string',
 		time = '?number',
