@@ -1,3 +1,4 @@
+rockspec_format = "3.0"
 package = "deque"
 version = "scm-1"
 source = {
