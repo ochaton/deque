@@ -1,4 +1,5 @@
-read_globals = {"T", "box.spacer", "box.watch"}
+read_globals = {"T", "box.watch"}
+globals = {"box.spacer"}
 include_files = {
 	"storage",
 }
